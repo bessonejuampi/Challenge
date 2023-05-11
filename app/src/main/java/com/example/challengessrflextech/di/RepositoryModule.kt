@@ -7,5 +7,5 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 val RepositoryModule = module {
-    factory<MainRepositoryContract> { MainRepository(androidContext()) }
+    factory<MainRepositoryContract> { MainRepository(get()) }
 }

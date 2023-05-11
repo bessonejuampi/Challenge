@@ -3,6 +3,7 @@ package com.example.challengessrflextech.di
 import android.content.Context
 import com.example.challengessrflextech.data.network.ApiClient
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -23,9 +24,13 @@ import java.util.concurrent.TimeUnit
 
         fun provideHttpClient(context: Context): OkHttpClient {
             val okHttpClientBuilder = OkHttpClient.Builder()
-                .connectTimeout(8000, TimeUnit.SECONDS)
-                .readTimeout(8000, TimeUnit.SECONDS)
+                .connectTimeout(8, TimeUnit.SECONDS)
+                .readTimeout(8, TimeUnit.SECONDS)
+            val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
 
+            okHttpClientBuilder.addInterceptor(httpLoggingInterceptor)
             okHttpClientBuilder.build()
             return okHttpClientBuilder.build()
         }
@@ -41,7 +46,7 @@ import java.util.concurrent.TimeUnit
 
         single { provideHttpClient(androidContext()) }
         single {
-            val baseUrl = "https://thecatapi.com/"
+            val baseUrl = "https://api.thecatapi.com/v1/"
             provideRetrofit(get(), baseUrl)
         }
     }
