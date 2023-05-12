@@ -12,6 +12,7 @@ import com.example.challengessrflextech.R
 import com.example.challengessrflextech.data.models.Cat
 import com.example.challengessrflextech.databinding.ActivityMainBinding
 import com.example.challengessrflextech.ui.viewModels.MainViewModel
+import com.example.challengessrflextech.utils.Constants
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 viewModel.getImagesRelated(query)
-                return true
+                return false
             }
 
             override fun onQueryTextChange(p0: String?): Boolean {
@@ -51,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         binding.rvCats.adapter = adapter
 
         adapter.onItemClicked = {item ->
-
+            viewModel.goToDetails(item)
         }
     }
 }

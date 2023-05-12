@@ -33,11 +33,11 @@
     </LinearLayout>
 
 
-    <TextView
+    <ImageView
         android:id="@+id/ivIconCat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_width="173dp"
+        android:layout_height="217dp"
+        android:src="@mipmap/ic_icon_cat_round"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

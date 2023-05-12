@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id("kotlin-parcelize")
 }
 
 android {
@@ -34,6 +35,8 @@ android {
     buildFeatures{
         viewBinding = true
     }
+
+
 }
 
 dependencies {
@@ -73,4 +76,7 @@ dependencies {
     //Interceptor
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.6'
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6'
+
+    //MaterialRatingBar
+    implementation 'me.zhanghai.android.materialratingbar:library:1.4.0'
 }
